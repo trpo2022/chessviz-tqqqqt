@@ -1,3 +1,3 @@
 all:shahmati
 shahmati:main.c
-	gcc main.c -Wall -Werror
+	gcc -Wall -Werror main.c 
