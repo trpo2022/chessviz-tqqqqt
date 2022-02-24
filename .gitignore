@@ -3,4 +3,8 @@
 *.dll
 *.swp
 *~
-#main.c#
+*.so
+*.html
+
+output
+
