@@ -95,6 +95,10 @@ void checkrule(int hod, int x, int y, int x1, int y1, int flag, int fig, int **e
 	}
 }
 
+void move(int hod, char text[], int pole[Weight][Height], int *er, FILE *ofile){  //[1] - strochka [2] - stolbik
+
+}
+
 void erormes(int *er, FILE *ofile){
 	switch(*er){
 		case 1:
