@@ -5,6 +5,7 @@
 *~
 *.so
 *.html
+*.txt
 
 output
 
