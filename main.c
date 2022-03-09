@@ -96,7 +96,7 @@ void checkrule(int hod, int x, int y, int x1, int y1, int flag, int fig, int **e
 }
 
 void move(int hod, char text[], int pole[Weight][Height], int *er, FILE *ofile){  //[1] - strochka [2] - stolbik
-		int es=0, znak=0, znak1=0, znak2=0;
+	int es=0, znak=0, znak1=0, znak2=0;
 	int xx=0, yy=0, xx1=0, yy1=0, flag=0, pamat=0, ned=0, eflag=0, pflag=0, ochered=0;
 	for(znak=0;znak<20;znak++){
 		
@@ -227,7 +227,7 @@ void erormes(int *er, FILE *ofile){
 
 int main()
 {
-    int x=8, y=8, ex=0, c=0, er=0, hod=1;
+    int ex=0, c=0, er=0, hod=1;
 	int tab[Weight][Height];
 	char line[20];
 	
