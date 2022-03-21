@@ -36,6 +36,6 @@ main.o: src/chessviz/main.c
 	mv main.d obj/src/chessviz/
 
 clean:
-	rm obj/src/chessviz/*.o obj/src/libchessviz/*.o bin/output
+	rm obj/src/chessviz/*.o obj/src/libchessviz/*.o obj/src/chessviz/*.d obj/src/libchessviz/*.d bin/output
 
 -include /src 
