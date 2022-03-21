@@ -3,7 +3,7 @@
 #include <libchessviz/print_table.h>
 
 void move(int hod, char text[], int pole[Weight][Height], int* er, FILE* ofile)
-{ //[1] - strochka [2] - stolbik
+{
     int znak = 0, znak1 = 0, znak2 = 0;
     int xx = 0, yy = 0, xx1 = 0, yy1 = 0, flag = 0, pamat = 0, ned = 0,
         eflag = 0, pflag = 0, ochered = 0;
@@ -186,4 +186,3 @@ void move(int hod, char text[], int pole[Weight][Height], int* er, FILE* ofile)
         }
     }
 }
-
