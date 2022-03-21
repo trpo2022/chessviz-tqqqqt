@@ -1,13 +1,12 @@
-name: Build
-
 on: push
 
 jobs:
 	build:
-		runs-on: linux mint 19.3 Tricia
+        name: Chess
+		runs-on: ubuntu-latest
 
 	steps:
-		- uses: action/checkouts@v2
+		- uses: actions/checkout@v2
 
 		- name: Check codestyle
 		run: git ls-files *.{c,h} xargs clang-format -i --verbose && git diff --exit-code
