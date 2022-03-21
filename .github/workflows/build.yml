@@ -1,0 +1,16 @@
+name: Chess
+
+on: push
+
+jobs:
+	build:
+		runs-on: linux mint 19.3 Tricia
+
+	steps:
+		- uses: action/checkouts@v2
+
+		- name: Check codestyle
+		run: git ls-files *.{c,h} xargs clang-format -i --verbose && git diff --exit-code
+
+		- name: Build application
+		run: make
