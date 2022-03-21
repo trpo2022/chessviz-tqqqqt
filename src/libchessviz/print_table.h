@@ -6,4 +6,10 @@
 #define Weight 8
 #define Height 8
 
-void printtable(int hod, char text[], int znak, int znak1, int tab[Weight][Height], FILE *ofile);
+void printtable(
+        int hod,
+        char text[],
+        int znak,
+        int znak1,
+        int tab[Weight][Height],
+        FILE* ofile);
