@@ -1,6 +1,12 @@
 #include <libchessviz/print_table.h>
 
-void printtable(int hod, char text[], int znak, int znak1, int tab[Weight][Height], FILE* ofile)
+void printtable(
+        int hod,
+        char text[],
+        int znak,
+        int znak1,
+        int tab[Weight][Height],
+        FILE* ofile)
 {
     int p = 1;
     printf("\n");
