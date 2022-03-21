@@ -181,8 +181,9 @@ void move(int hod, char text[], int pole[Weight][Height], int* er, FILE* ofile)
             yy1 = 0;
         }
 
-        if (*er > 0)
+        if (*er > 0) {
             break;
+        }
     }
 }
 
