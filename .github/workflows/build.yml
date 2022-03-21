@@ -1,8 +1,8 @@
 on: push
 
 jobs:
-	build:
-        name: Chess
+  build:
+    name: Chess
 		runs-on: ubuntu-latest
 
 	steps:
