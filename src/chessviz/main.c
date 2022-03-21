@@ -53,4 +53,3 @@ int main()
     fclose(ofile);
     return 0;
 }
-
