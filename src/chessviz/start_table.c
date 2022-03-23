@@ -2,7 +2,7 @@
 
 void starttable(int tab[Weight][Height])
 {
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < Weight; i++) {
         switch (i) {
         case 0:
             tab[i][0] = 2;
@@ -25,12 +25,12 @@ void starttable(int tab[Weight][Height])
             tab[i][7] = 20;
             break;
         case 1:
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < Height; j++) {
                 tab[i][j] = 1;
             }
             break;
         case 6:
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < Height; j++) {
                 tab[i][j] = 10;
             }
             break;
@@ -39,7 +39,7 @@ void starttable(int tab[Weight][Height])
         case 4:
         case 5:
         default:
-            for (int j = 0; j < 8; j++) {
+            for (int j = 0; j < Height; j++) {
                 tab[i][j] = 0;
             }
             break;
