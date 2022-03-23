@@ -28,8 +28,7 @@ print_table.o: $(SRCLB)/print_table.c
 main.o: $(SRCCH)/main.c
 	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCCH)/main.c -o $(OBJCH)/main.o
 
-
-clean:
+clean: $(OBJCH)/main.o
 	rm $(OBJCH)/*.o $(OBJCH)/*.d $(OBJLB)/*.o $(OBJLB)/*.d
 
 -include /src/ 
