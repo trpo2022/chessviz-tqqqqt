@@ -2,36 +2,36 @@
 
 void starttable(int tab[Weight][Height])
 {
-    for (int i = 0; i < 8; i++) {
-        switch (i) {
+    for (int y = 0; y < Weight; y++) {
+        switch (y) {
         case 0:
-            tab[i][0] = 2;
-            tab[i][1] = 3;
-            tab[i][2] = 4;
-            tab[i][3] = 5;
-            tab[i][4] = 6;
-            tab[i][5] = 4;
-            tab[i][6] = 3;
-            tab[i][7] = 2;
+            tab[y][0] = 2;
+            tab[y][1] = 3;
+            tab[y][2] = 4;
+            tab[y][3] = 5;
+            tab[y][4] = 6;
+            tab[y][5] = 4;
+            tab[y][6] = 3;
+            tab[y][7] = 2;
             break;
         case 7:
-            tab[i][0] = 20;
-            tab[i][1] = 30;
-            tab[i][2] = 40;
-            tab[i][3] = 50;
-            tab[i][4] = 60;
-            tab[i][5] = 40;
-            tab[i][6] = 30;
-            tab[i][7] = 20;
+            tab[y][0] = 20;
+            tab[y][1] = 30;
+            tab[y][2] = 40;
+            tab[y][3] = 50;
+            tab[y][4] = 60;
+            tab[y][5] = 40;
+            tab[y][6] = 30;
+            tab[y][7] = 20;
             break;
         case 1:
-            for (int j = 0; j < 8; j++) {
-                tab[i][j] = 1;
+            for (int x = 0; x < Height; x++) {
+                tab[y][x] = 1;
             }
             break;
         case 6:
-            for (int j = 0; j < 8; j++) {
-                tab[i][j] = 10;
+            for (int x = 0; x < Height; x++) {
+                tab[y][x] = 10;
             }
             break;
         case 2:
@@ -39,8 +39,8 @@ void starttable(int tab[Weight][Height])
         case 4:
         case 5:
         default:
-            for (int j = 0; j < 8; j++) {
-                tab[i][j] = 0;
+            for (int x = 0; x < Height; x++) {
+                tab[y][x] = 0;
             }
             break;
         }

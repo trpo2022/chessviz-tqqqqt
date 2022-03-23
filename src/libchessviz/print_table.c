@@ -22,10 +22,10 @@ void printtable(
         }
     printf(" \n");
     fprintf(ofile, " \n");
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < Weight; i++) {
         printf("%d", p);
         fprintf(ofile, "%d", p);
-        for (int j = 0; j < 8; j++) {
+        for (int j = 0; j < Height; j++) {
             if (tab[i][j] == 0) {
                 printf("  ");
                 fprintf(ofile, "  ");

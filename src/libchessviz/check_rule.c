@@ -12,19 +12,19 @@ void checkrule(
             **er = 1;
         if (abs(x1 - x) > 1 && (y != 7 || y != 1))
             **er = 1;
-        if (abs(x1 - x) > 8 || abs(y1 - y) > 8)
+        if (abs(x1 - x) > Height || abs(y1 - y) > Weight)
             **er = 5;
         break;
     case 2:
     case 20: // ladya
         if (abs(x1 - x) > 0 && abs(y1 - y) > 0)
             **er = 1;
-        if (abs(x1 - x) > 8 || abs(y1 - y) > 8)
+        if (abs(x1 - x) > Height || abs(y1 - y) > Weight)
             **er = 5;
         break;
     case 3:
     case 30: // koni
-        if (abs(x1 - x) > 8 || abs(y1 - y) > 8)
+        if (abs(x1 - x) > Height || abs(y1 - y) > Weight)
             **er = 5;
         if ((abs(y1 - y) == 2 && abs(x1 - x) == 1)
             || (abs(y1 - y) == 1 && abs(x1 - x) == 2)) {
@@ -33,7 +33,7 @@ void checkrule(
         break;
     case 4:
     case 40: // slon
-        if (abs(x1 - x) > 8 || abs(y1 - y) > 8)
+        if (abs(x1 - x) > Height || abs(y1 - y) > Weight)
             **er = 5;
         if ((abs(x1 - x) > 0 && abs(y1 - y) == 0)
             || ((y1 - y) > 0 && (x1 - x) == 0))
@@ -41,7 +41,7 @@ void checkrule(
         break;
     case 5:
     case 50: // ferz
-        if (abs(x1 - x) > 8 || abs(y1 - y) > 8)
+        if (abs(x1 - x) > Height || abs(y1 - y) > Weight)
             **er = 5;
         if ((abs(x1 - x) == 2 && abs(y1 - y) == 1)
             || (abs(x1 - x) == 1 && abs(y1 - y) == 2))
@@ -49,7 +49,7 @@ void checkrule(
         break;
     case 6:
     case 60: // korol
-        if (abs(x1 - x) > 8 || abs(y1 - y) > 8)
+        if (abs(x1 - x) > Height || abs(y1 - y) > Weight)
             **er = 5;
         if (abs(x1 - x) > 1 && abs(y1 - y) > 1)
             **er = 1;

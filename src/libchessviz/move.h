@@ -5,5 +5,6 @@
 
 #define Weight 8
 #define Height 8
+#define size 20
 
 void move(int hod, char text[], int pole[Weight][Height], int* er, FILE* ofile);

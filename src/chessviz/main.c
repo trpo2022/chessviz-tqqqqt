@@ -1,4 +1,3 @@
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,12 +9,13 @@
 
 #define Weight 8
 #define Height 8
+#define size 20
 
 int main()
 {
     int ex = 0, c = 0, er = 0, hod = 1;
     int tab[Weight][Height];
-    char line[20];
+    char line[size];
 
     FILE* file = fopen("text.txt", "r");
     if (file == NULL) {
@@ -35,7 +35,7 @@ int main()
     fprintf(ofile, "\n \n");
     while (ex < 2) {
         while ((c = fgetc(file)) != EOF) {
-            fgets(line, 20, file);
+            fgets(line, size, file);
             move(hod, line, tab, &er, ofile);
             printf("\n \n");
             fprintf(ofile, "\n \n");
