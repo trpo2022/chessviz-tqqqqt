@@ -5,8 +5,8 @@ OBJCH = obj/src/chessviz/
 OBJLB = obj/src/libchessviz/
 
 output: start_table.o check_rule.o eror_mes.o move.o print_table.o main.o
-	gcc obj/src/chessviz/start_table.o obj/src/libchessviz/check_rule.o obj/src/libchessviz/eror_mes.o obj/src/libchessviz/move.o obj/src/libchessviz/print_table.o obj/src/chessviz/main.o -o output
-	mv output bin/
+	gcc $(OBJCH)/start_table.o $(OBJLB)/check_rule.o $(OBJLB)/eror_mes.o $(OBJLB)/move.o $(OBJLB)/print_table.o $(OBJCH)/main.o -o bin/output
+	#mv output bin/
 
 start_table.o: src/chessviz/start_table.c
 	gcc -c $(CFLAGS) $(CPFLAGS) src/chessviz/start_table.c -o obj/src/chessviz/start_table.o
@@ -33,7 +33,6 @@ main.o: src/chessviz/main.c
 
 
 clean:
-	#rm obj/src/chessviz/*.o obj/src/libchessviz/*.o obj/src/chessviz/*.d obj/src/libchessviz/*.d bin/output
 	rm $(OBJCH)*.o $(OBJCH)*.d $(OBJLB)*.o $(OBJLB)*.d
 
 -include /src/ 
