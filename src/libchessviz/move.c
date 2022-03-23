@@ -7,7 +7,7 @@ void move(int hod, char text[], int pole[Weight][Height], int* er, FILE* ofile)
     int znak = 0, znak1 = 0, znak2 = 0;
     int xx = 0, yy = 0, xx1 = 0, yy1 = 0, flag = 0, pamat = 0, ned = 0,
         eflag = 0, pflag = 0, ochered = 0;
-    for (znak = 0; znak < 20; znak++) {
+    for (znak = 0; znak < size; znak++) {
         if (((text[znak] >= 73 && text[znak] <= 90) && text[znak] != 75
              && text[znak] != 78 && text[znak] != 80 && text[znak] != 81
              && text[znak] != 82)
