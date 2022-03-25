@@ -3,4 +3,4 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void erormes(int* er, FILE* ofile);
+void eror_message(int* er, FILE* ofile);

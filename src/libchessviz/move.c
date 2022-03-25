@@ -2,186 +2,198 @@
 #include <libchessviz/move.h>
 #include <libchessviz/print_table.h>
 
-void move(int hod, char text[], int pole[Weight][Height], int* er, FILE* ofile)
+void move_figure(
+        int step,
+        char text[],
+        int table[Weight][Height],
+        int* error,
+        FILE* ofile)
 {
-    int znak = 0, znak1 = 0, znak2 = 0;
-    int xx = 0, yy = 0, xx1 = 0, yy1 = 0, flag = 0, pamat = 0, ned = 0,
-        eflag = 0, pflag = 0, ochered = 0;
-    for (znak = 0; znak < size; znak++) {
-        if (((text[znak] >= 73 && text[znak] <= 90) && text[znak] != 75
-             && text[znak] != 78 && text[znak] != 80 && text[znak] != 81
-             && text[znak] != 82)
-            || (text[znak] >= 105 && text[znak] <= 122 && text[znak] != 120)
-            || (text[znak] == 57)) {
-            *er = 5;
+    int symbol = 0, first_sign = 0, last_sign = 0;
+    int xx = 0, yy = 0, xx1 = 0, yy1 = 0, move_flag = 0, memory = 0,
+        need_figure = 0, end_of_record = 0, print_flag = 0, players_turn = 0;
+    for (symbol = 0; symbol < size; symbol++) {
+        if (((text[symbol] >= 73 && text[symbol] <= 90) && text[symbol] != 75
+             && text[symbol] != 78 && text[symbol] != 80 && text[symbol] != 81
+             && text[symbol] != 82)
+            || (text[symbol] >= 105 && text[symbol] <= 122
+                && text[symbol] != 120)
+            || (text[symbol] == 57)) {
+            *error = 5;
             break;
         }
 
-        if (text[znak] == '-')
-            flag = 1;
-        if (text[znak] == 'x')
-            flag = 2;
-        if (text[znak] == 'a' && flag == 0)
+        if (text[symbol] == '-')
+            move_flag = 1;
+        if (text[symbol] == 'x')
+            move_flag = 2;
+        if (text[symbol] == 'a' && move_flag == 0)
             xx = 0;
-        else if (text[znak] == 'b' && flag == 0)
+        else if (text[symbol] == 'b' && move_flag == 0)
             xx = 1;
-        else if (text[znak] == 'c' && flag == 0)
+        else if (text[symbol] == 'c' && move_flag == 0)
             xx = 2;
-        else if (text[znak] == 'd' && flag == 0)
+        else if (text[symbol] == 'd' && move_flag == 0)
             xx = 3;
-        else if (text[znak] == 'e' && flag == 0)
+        else if (text[symbol] == 'e' && move_flag == 0)
             xx = 4;
-        else if (text[znak] == 'f' && flag == 0)
+        else if (text[symbol] == 'f' && move_flag == 0)
             xx = 5;
-        else if (text[znak] == 'g' && flag == 0)
+        else if (text[symbol] == 'g' && move_flag == 0)
             xx = 6;
-        else if (text[znak] == 'h' && flag == 0)
+        else if (text[symbol] == 'h' && move_flag == 0)
             xx = 7;
-        else if (text[znak] == 49 && flag == 0)
+        else if (text[symbol] == 49 && move_flag == 0)
             yy = 0;
-        else if (text[znak] == 50 && flag == 0)
+        else if (text[symbol] == 50 && move_flag == 0)
             yy = 1;
-        else if (text[znak] == 51 && flag == 0)
+        else if (text[symbol] == 51 && move_flag == 0)
             yy = 2;
-        else if (text[znak] == 52 && flag == 0)
+        else if (text[symbol] == 52 && move_flag == 0)
             yy = 3;
-        else if (text[znak] == 53 && flag == 0)
+        else if (text[symbol] == 53 && move_flag == 0)
             yy = 4;
-        else if (text[znak] == 54 && flag == 0)
+        else if (text[symbol] == 54 && move_flag == 0)
             yy = 5;
-        else if (text[znak] == 55 && flag == 0)
+        else if (text[symbol] == 55 && move_flag == 0)
             yy = 6;
-        else if (text[znak] == 56 && flag == 0)
+        else if (text[symbol] == 56 && move_flag == 0)
             yy = 7;
 
-        if (text[znak] == 'a' && (flag == 1 || flag == 2))
+        if (text[symbol] == 'a' && (move_flag == 1 || move_flag == 2))
             xx1 = 0;
-        else if (text[znak] == 'b' && (flag == 1 || flag == 2))
+        else if (text[symbol] == 'b' && (move_flag == 1 || move_flag == 2))
             xx1 = 1;
-        else if (text[znak] == 'c' && (flag == 1 || flag == 2))
+        else if (text[symbol] == 'c' && (move_flag == 1 || move_flag == 2))
             xx1 = 2;
-        else if (text[znak] == 'd' && (flag == 1 || flag == 2))
+        else if (text[symbol] == 'd' && (move_flag == 1 || move_flag == 2))
             xx1 = 3;
-        else if (text[znak] == 'e' && (flag == 1 || flag == 2))
+        else if (text[symbol] == 'e' && (move_flag == 1 || move_flag == 2))
             xx1 = 4;
-        else if (text[znak] == 'f' && (flag == 1 || flag == 2))
+        else if (text[symbol] == 'f' && (move_flag == 1 || move_flag == 2))
             xx1 = 5;
-        else if (text[znak] == 'g' && (flag == 1 || flag == 2))
+        else if (text[symbol] == 'g' && (move_flag == 1 || move_flag == 2))
             xx1 = 6;
-        else if (text[znak] == 'h' && (flag == 1 || flag == 2))
+        else if (text[symbol] == 'h' && (move_flag == 1 || move_flag == 2))
             xx1 = 7;
-        else if (text[znak] == 49 && (flag == 1 || flag == 2)) {
+        else if (text[symbol] == 49 && (move_flag == 1 || move_flag == 2)) {
             yy1 = 0;
-            eflag = 1;
-        } else if (text[znak] == 50 && (flag == 1 || flag == 2)) {
+            end_of_record = 1;
+        } else if (text[symbol] == 50 && (move_flag == 1 || move_flag == 2)) {
             yy1 = 1;
-            eflag = 1;
-        } else if (text[znak] == 51 && (flag == 1 || flag == 2)) {
+            end_of_record = 1;
+        } else if (text[symbol] == 51 && (move_flag == 1 || move_flag == 2)) {
             yy1 = 2;
-            eflag = 1;
-        } else if (text[znak] == 52 && (flag == 1 || flag == 2)) {
+            end_of_record = 1;
+        } else if (text[symbol] == 52 && (move_flag == 1 || move_flag == 2)) {
             yy1 = 3;
-            eflag = 1;
-        } else if (text[znak] == 53 && (flag == 1 || flag == 2)) {
+            end_of_record = 1;
+        } else if (text[symbol] == 53 && (move_flag == 1 || move_flag == 2)) {
             yy1 = 4;
-            eflag = 1;
-        } else if (text[znak] == 54 && (flag == 1 || flag == 2)) {
+            end_of_record = 1;
+        } else if (text[symbol] == 54 && (move_flag == 1 || move_flag == 2)) {
             yy1 = 5;
-            eflag = 1;
-        } else if (text[znak] == 55 && (flag == 1 || flag == 2)) {
+            end_of_record = 1;
+        } else if (text[symbol] == 55 && (move_flag == 1 || move_flag == 2)) {
             yy1 = 6;
-            eflag = 1;
-        } else if (text[znak] == 56 && (flag == 1 || flag == 2)) {
+            end_of_record = 1;
+        } else if (text[symbol] == 56 && (move_flag == 1 || move_flag == 2)) {
             yy1 = 7;
-            eflag = 1;
+            end_of_record = 1;
         }
 
-        if (text[znak] == 'R' && flag == 0)
-            ned = 20;
-        else if (text[znak] == 'N' && flag == 0)
-            ned = 30;
-        else if (text[znak] == 'B' && flag == 0)
-            ned = 40;
-        else if (text[znak] == 'Q' && flag == 0)
-            ned = 50;
-        else if (text[znak] == 'K' && flag == 0)
-            ned = 60;
+        if (text[symbol] == 'R' && move_flag == 0)
+            need_figure = 20;
+        else if (text[symbol] == 'N' && move_flag == 0)
+            need_figure = 30;
+        else if (text[symbol] == 'B' && move_flag == 0)
+            need_figure = 40;
+        else if (text[symbol] == 'Q' && move_flag == 0)
+            need_figure = 50;
+        else if (text[symbol] == 'K' && move_flag == 0)
+            need_figure = 60;
 
-        if (text[znak] != ' ' && text[znak] != '.' && pflag == 0) {
-            znak1 = znak;
-            pflag = 1;
+        if (text[symbol] != ' ' && text[symbol] != '.' && print_flag == 0) {
+            first_sign = symbol;
+            print_flag = 1;
         }
 
-        if (eflag == 1 && flag == 1) {
-            znak2 = znak;
-            if (ned > 0
-                && (pole[yy][xx] != ned && pole[yy][xx] != (ned / 10))) {
-                *er = 2;
+        if (end_of_record == 1 && move_flag == 1) {
+            last_sign = symbol;
+            if (need_figure > 0
+                && (table[yy][xx] != need_figure
+                    && table[yy][xx] != (need_figure / 10))) {
+                *error = 2;
                 break;
             }
-            if (pole[yy1][xx1] != 0) {
-                *er = 3;
+            if (table[yy1][xx1] != 0) {
+                *error = 3;
                 break;
             }
-            checkrule(hod, xx, yy, xx1, yy1, flag, pole[yy][xx], &er);
-            pamat = pole[yy][xx];
-            pole[yy][xx] = 0;
-            pole[yy1][xx1] = pamat;
-            flag = 3;
-            printtable(hod, text, znak1, znak2, pole, ofile);
-            if (pole[yy1][xx1] <= 6 && (ochered == 0 || ochered == 2))
-                ochered = 1;
+            check_rule(
+                    step, xx, yy, xx1, yy1, move_flag, table[yy][xx], &error);
+            memory = table[yy][xx];
+            table[yy][xx] = 0;
+            table[yy1][xx1] = memory;
+            move_flag = 3;
+            print_table(step, text, first_sign, last_sign, table, ofile);
+            if (table[yy1][xx1] <= 6
+                && (players_turn == 0 || players_turn == 2))
+                players_turn = 1;
             else if (
-                    pole[yy1][xx1] >= 10 && pole[yy1][xx1] <= 60
-                    && ochered == 1)
-                ochered = 2;
+                    table[yy1][xx1] >= 10 && table[yy1][xx1] <= 60
+                    && players_turn == 1)
+                players_turn = 2;
             else
-                *er = 6;
+                *error = 6;
         }
-        if (eflag == 1 && flag == 2) {
-            znak2 = znak;
-            if (ned > 0
-                && (pole[yy][xx] != ned && pole[yy][xx] != (ned / 10))) {
-                *er = 2;
+        if (end_of_record == 1 && move_flag == 2) {
+            last_sign = symbol;
+            if (need_figure > 0
+                && (table[yy][xx] != need_figure
+                    && table[yy][xx] != (need_figure / 10))) {
+                *error = 2;
                 break;
             }
-            if (pole[yy1][xx1] == 0) {
-                *er = 4;
+            if (table[yy1][xx1] == 0) {
+                *error = 4;
                 break;
             }
-            checkrule(hod, xx, yy, xx1, yy1, flag, pole[yy][xx], &er);
-            pamat = pole[yy][xx];
-            pole[yy][xx] = 0;
-            pole[yy1][xx1] = pamat;
-            flag = 3;
-            printtable(hod, text, znak1, znak2, pole, ofile);
-            if (pole[yy1][xx1] <= 6 && (ochered == 0 || ochered == 2))
-                ochered = 1;
+            check_rule(
+                    step, xx, yy, xx1, yy1, move_flag, table[yy][xx], &error);
+            memory = table[yy][xx];
+            table[yy][xx] = 0;
+            table[yy1][xx1] = memory;
+            move_flag = 3;
+            print_table(step, text, first_sign, last_sign, table, ofile);
+            if (table[yy1][xx1] <= 6
+                && (players_turn == 0 || players_turn == 2))
+                players_turn = 1;
             else if (
-                    pole[yy1][xx1] >= 10 && pole[yy1][xx1] <= 60
-                    && ochered == 1)
-                ochered = 2;
+                    table[yy1][xx1] >= 10 && table[yy1][xx1] <= 60
+                    && players_turn == 1)
+                players_turn = 2;
             else
-                *er = 6;
+                *error = 6;
         }
 
-        if (text[znak] == 35 || text[znak] == '+') {
+        if (text[symbol] == 35 || text[symbol] == '+') {
             break;
         }
 
-        if (flag == 3) {
-            flag = 0;
-            eflag = 0;
-            pflag = 0;
-            ned = 0;
+        if (move_flag == 3) {
+            move_flag = 0;
+            end_of_record = 0;
+            print_flag = 0;
+            need_figure = 0;
             xx = 0;
             yy = 0;
-            pamat = 0;
+            memory = 0;
             xx1 = 0;
             yy1 = 0;
         }
 
-        if (*er > 0) {
+        if (*error > 0) {
             break;
         }
     }

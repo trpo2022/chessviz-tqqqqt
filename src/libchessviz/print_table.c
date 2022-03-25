@@ -1,6 +1,6 @@
 #include <libchessviz/print_table.h>
 
-void printtable(
+void print_table(
         int hod,
         char text[],
         int znak,

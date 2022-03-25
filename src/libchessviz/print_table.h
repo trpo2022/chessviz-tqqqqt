@@ -6,7 +6,7 @@
 #define Weight 8
 #define Height 8
 
-void printtable(
+void print_table(
         int hod,
         char text[],
         int znak,
