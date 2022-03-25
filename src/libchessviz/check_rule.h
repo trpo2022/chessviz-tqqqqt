@@ -6,5 +6,12 @@
 #define Weight 8
 #define Height 8
 
-void checkrule(
-        int hod, int x, int y, int x1, int y1, int flag, int fig, int** er);
+void check_rule(
+        int step,
+        int x,
+        int y,
+        int x1,
+        int y1,
+        int flag,
+        int figures,
+        int** error);
