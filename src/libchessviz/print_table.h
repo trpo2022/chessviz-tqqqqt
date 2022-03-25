@@ -7,9 +7,9 @@
 #define Height 8
 
 void print_table(
-        int hod,
+        int step,
         char text[],
-        int znak,
-        int znak1,
-        int tab[Weight][Height],
+        int first_sign,
+        int last_sign,
+        int table[Weight][Height],
         FILE* ofile);
