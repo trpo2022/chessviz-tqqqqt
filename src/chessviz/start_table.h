@@ -6,4 +6,4 @@
 #define Weight 8
 #define Height 8
 
-void starttable(int tab[Weight][Height]);
+void start_table(int tab[Weight][Height]);

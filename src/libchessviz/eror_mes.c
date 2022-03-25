@@ -1,8 +1,8 @@
 #include <libchessviz/eror_mes.h>
 
-void erormes(int* er, FILE* ofile)
+void eror_message(int* error, FILE* ofile)
 {
-    switch (*er) {
+    switch (*error) {
     case 1:
         printf(" \nViolation of the rules for the movement of figures.\n ");
         fprintf(ofile,

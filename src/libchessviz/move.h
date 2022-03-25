@@ -7,4 +7,9 @@
 #define Height 8
 #define size 20
 
-void move(int hod, char text[], int pole[Weight][Height], int* er, FILE* ofile);
+void move_figure(
+        int step,
+        char text[],
+        int table[Weight][Height],
+        int* error,
+        FILE* ofile);
