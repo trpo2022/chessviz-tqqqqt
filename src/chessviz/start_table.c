@@ -1,6 +1,6 @@
 #include <chessviz/start_table.h>
 
-void starttable(int table[Weight][Height])
+void start_table(int table[Weight][Height])
 {
     for (int y = 0; y < Weight; y++) {
         switch (y) {
