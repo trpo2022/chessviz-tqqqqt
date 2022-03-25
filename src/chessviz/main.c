@@ -13,41 +13,41 @@
 
 int main()
 {
-    int ex = 0, c = 0, er = 0, hod = 1;
-    int tab[Weight][Height];
+    int exit_status = 0, end_of_line = 0, error = 0, step = 1;
+    int table[Weight][Height];
     char line[size];
 
     FILE* file = fopen("text.txt", "r");
     if (file == NULL) {
         printf("Error. Text file do not opened. Check text.txt file.");
-        return -3;
+        return 44;
     }
 
     FILE* ofile = fopen("output.txt", "w");
     if (ofile == NULL) {
         printf(" Errore. Output file do not opened. Check output.txt file. ");
-        return -3;
+        return 44;
     }
 
-    starttable(tab);
-    printtable(0, line, 0, 0, tab, ofile);
+    starttable(table);
+    printtable(0, line, 0, 0, table, ofile);
     printf("\n \n");
     fprintf(ofile, "\n \n");
-    while (ex < 2) {
-        while ((c = fgetc(file)) != EOF) {
+    while (exit_status < 2) {
+        while ((end_of_line = fgetc(file)) != EOF) {
             fgets(line, size, file);
-            move(hod, line, tab, &er, ofile);
+            move(step, line, table, &error, ofile);
             printf("\n \n");
             fprintf(ofile, "\n \n");
-            hod++;
-            if (er > 0)
+            step++;
+            if (error > 0)
                 break;
         }
-        erormes(&er, ofile);
-        if (er > 0) {
+        erormes(&error, ofile);
+        if (error > 0) {
             return 44;
         }
-        ex += 20;
+        exit_status += 20;
     }
     fclose(file);
     fclose(ofile);
