@@ -29,21 +29,21 @@ int main()
         return 44;
     }
 
-    starttable(table);
-    printtable(0, line, 0, 0, table, ofile);
+    start_table(table);
+    print_table(0, line, 0, 0, table, ofile);
     printf("\n \n");
     fprintf(ofile, "\n \n");
     while (exit_status < 2) {
         while ((end_of_line = fgetc(file)) != EOF) {
             fgets(line, size, file);
-            move(step, line, table, &error, ofile);
+            move_figure(step, line, table, &error, ofile);
             printf("\n \n");
             fprintf(ofile, "\n \n");
             step++;
             if (error > 0)
                 break;
         }
-        erormes(&error, ofile);
+        eror_message(&error, ofile);
         if (error > 0) {
             return 44;
         }
