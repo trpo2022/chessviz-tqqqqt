@@ -1,14 +1,7 @@
 #include <libchessviz/check_rule.h>
 
 void check_rule(
-        int step,
-        int x,
-        int y,
-        int x1,
-        int y1,
-        int flag,
-        int figures,
-        int** error)
+        int x, int y, int x1, int y1, int flag, int figures, int** error)
 {
     switch (figures) {
     case 1:
