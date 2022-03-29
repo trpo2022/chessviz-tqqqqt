@@ -1,34 +1,42 @@
-CFLAGS = -Wall -Werror -I ./src
-CPFLAGS = -MMD
+APP = Chessviz
 
-OBJCH = obj/src/chessviz
-OBJLB = obj/src/libchessviz
+APP_NAME = chessviz
+LIB_NAME = libchessviz
 
-SRCCH = src/chessviz
-SRCLB = src/libchessviz
+CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -I src -MMD
 
-output: start_table.o check_rule.o eror_mes.o move.o print_table.o main.o
-	gcc $(OBJCH)/start_table.o $(OBJLB)/check_rule.o $(OBJLB)/eror_mes.o $(OBJLB)/move.o $(OBJLB)/print_table.o $(OBJCH)/main.o -o bin/output
+BIN_DIR = bin
+OBJ_DIR = obj
+SRC_DIR = src
 
-start_table.o: $(SRCCH)/start_table.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCCH)/start_table.c -o $(OBJCH)/start_table.o
+APP_PATH = $(BIN_DIR)/$(APP)
+LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
 
-check_rule.o: $(SRCLB)/check_rule.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCLB)/check_rule.c -o $(OBJLB)/check_rule.o
+APP_SRC = $(shell find $(SRC_DIR)/$(APP_NAME) -name '*.c')
+APP_OBJ = $(APP_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/$(SRC_DIR)/%.o)
 
-eror_mes.o: $(SRCLB)/eror_mes.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCLB)/eror_mes.c -o $(OBJLB)/eror_mes.o
+LIB_SRC = $(shell find $(SRC_DIR)/$(LIB_NAME) -name '*.c')
+LIB_OBJ = $(LIB_SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/$(SRC_DIR)/%.o)
 
-move.o: $(SRCLB)/move.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCLB)/move.c -o $(OBJLB)/move.o
+DEPS = $(APP_OBJ:.o=.d) $(LIB_OBJ:.o=.d)
 
-print_table.o: $(SRCLB)/print_table.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCLB)/print_table.c -o $(OBJLB)/print_table.o
+.PHONY: $(APP)
+$(APP): $(APP_PATH)
 
-main.o: $(SRCCH)/main.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCCH)/main.c -o $(OBJCH)/main.o
+-include $(DEPS)
 
-clean: $(OBJCH)/main.o
-	rm $(OBJCH)/*.o $(OBJCH)/*.d $(OBJLB)/*.o $(OBJLB)/*.d
+$(APP_PATH): $(APP_OBJ) $(LIB_PATH)
+	gcc $(CFLAGS) $(CPPFLAGS) $^ -o $@
 
--include /src/ 
+$(LIB_PATH): $(LIB_OBJ)
+	ar rcs $@ $^
+
+$(OBJ_DIR)/%.o: %.c
+	gcc -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+.PHONY: clean
+clean:
+	rm $(APP_PATH) $(LIB_PATH)
+	find $(OBJ_DIR) -name '*.o' -exec rm '{}' \;
+	find $(OBJ_DIR) -name '*.d' -exec rm '{}' \;
