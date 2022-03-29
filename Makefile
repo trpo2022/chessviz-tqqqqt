@@ -1,34 +1,44 @@
-CFLAGS = -Wall -Werror -I ./src/
-CPFLAGS = -MMD
+APP_NAME = chessviz
+LIB_NAME = libchessviz
 
-OBJCH = obj/src/chessviz
-OBJLB = obj/src/libchessviz
+CFLAGS = -Wall -Wextra -Werror
+CPPFLAGS = -I src -MP -MMD
+LDFLAGS =
+LDLIBS =
 
-SRCCH = src/chessviz
-SRCLB = src/libchessviz
+BIN_DIR = bin
+OBJ_DIR = obj
+SRC_DIR = src
 
-output: start_table.o check_rule.o eror_mes.o move.o print_table.o main.o
-	gcc start_table.o $(OBJLB)/check_rule.o $(OBJLB)/eror_mes.o $(OBJLB)/move.o $(OBJLB)/print_table.o $(OBJCH)/main.o -o bin/output
+APP_PATH = $(BIN_DIR)/$(APP_NAME)
+LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
 
-start_table.o: $(SRCCH)/start_table.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCCH)/start_table.c -o $(OBJCH)/start_table.o
+SRC_EXT = c
 
-check_rule.o: $(SRCLB)/check_rule.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCLB)/check_rule.c -o $(OBJLB)/check_rule.o
+APP_SOURCES = $(shell find $(SRC_DIR)/$(APP_NAME) -name '*.$(SRC_EXT)')
+APP_OBJECTS = $(APP_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
 
-eror_mes.o: $(SRCLB)/eror_mes.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCLB)/eror_mes.c -o $(OBJLB)/eror_mes.o
+LIB_SOURCES = $(shell find $(SRC_DIR)/$(LIB_NAME) -name '*.$(SRC_EXT)')
+LIB_OBJECTS = $(LIB_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
 
-move.o: $(SRCLB)/move.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCLB)/move.c -o $(OBJLB)/move.o
+DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
 
-print_table.o: $(SRCLB)/print_table.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCLB)/print_table.c -o $(OBJLB)/print_table.o
+.PHONY: all
+all: $(APP_PATH)
 
-main.o: $(SRCCH)/main.c
-	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCCH)/main.c -o $(OBJCH)/main.o
+-include $(DEPS)
 
-clean: $(OBJCH)/main.o
-	rm $(OBJCH)/*.o $(OBJCH)/*.d $(OBJLB)/*.o $(OBJLB)/*.d
+$(APP_PATH): $(APP_OBJECTS) $(LIB_PATH)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 
-#-include /src/
+$(LIB_PATH): $(LIB_OBJECTS)
+	ar rcs $@ $^
+
+$(OBJ_DIR)/%.o: %.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+
+.PHONY: clean
+clean:
+	$(RM) $(APP_PATH) $(LIB_PATH)
+	find $(OBJ_DIR) -name '*.o' -exec $(RM) '{}' \;
+	find $(OBJ_DIR) -name '*.d' -exec $(RM) '{}' \;
