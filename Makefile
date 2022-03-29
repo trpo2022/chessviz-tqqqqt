@@ -1,3 +1,5 @@
+APP = Chessviz
+
 APP_NAME = chessviz
 LIB_NAME = libchessviz
 
@@ -10,7 +12,7 @@ BIN_DIR = bin
 OBJ_DIR = obj
 SRC_DIR = src
 
-APP_PATH = $(BIN_DIR)/$(APP_NAME)
+APP_PATH = $(BIN_DIR)/$(APP)
 LIB_PATH = $(OBJ_DIR)/$(SRC_DIR)/$(LIB_NAME)/$(LIB_NAME).a
 
 SRC_EXT = c
@@ -23,8 +25,8 @@ LIB_OBJECTS = $(LIB_SOURCES:$(SRC_DIR)/%.$(SRC_EXT)=$(OBJ_DIR)/$(SRC_DIR)/%.o)
 
 DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
 
-.PHONY: $(APP_NAME)
-$(APP_NAME): $(APP_PATH)
+.PHONY: $(APP)
+$(APP): $(APP_PATH)
 
 -include $(DEPS)
 
