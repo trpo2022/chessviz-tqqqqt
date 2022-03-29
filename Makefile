@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Werror -I ./src
+CFLAGS = -Wall -Werror -I ./src/
 CPFLAGS = -MMD
 
 OBJCH = obj/src/chessviz
@@ -8,7 +8,7 @@ SRCCH = src/chessviz
 SRCLB = src/libchessviz
 
 output: start_table.o check_rule.o eror_mes.o move.o print_table.o main.o
-	gcc $(OBJCH)/start_table.o $(OBJLB)/check_rule.o $(OBJLB)/eror_mes.o $(OBJLB)/move.o $(OBJLB)/print_table.o $(OBJCH)/main.o -o bin/output
+	gcc start_table.o $(OBJLB)/check_rule.o $(OBJLB)/eror_mes.o $(OBJLB)/move.o $(OBJLB)/print_table.o $(OBJCH)/main.o -o bin/output
 
 start_table.o: $(SRCCH)/start_table.c
 	gcc -c $(CFLAGS) $(CPFLAGS) $(SRCCH)/start_table.c -o $(OBJCH)/start_table.o
@@ -31,4 +31,4 @@ main.o: $(SRCCH)/main.c
 clean: $(OBJCH)/main.o
 	rm $(OBJCH)/*.o $(OBJCH)/*.d $(OBJLB)/*.o $(OBJLB)/*.d
 
--include /src/ 
+#-include /src/
