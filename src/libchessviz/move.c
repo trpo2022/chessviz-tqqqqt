@@ -14,12 +14,20 @@ void move_figure(
         need_figure = 0, end_of_record = 0, print_flag = 0, players_turn = 0;
     for (symbol = 0; symbol <= (int)strlen(text) - reading_artifacts;
          symbol++) {
-        if (((text[symbol] >= 73 && text[symbol] <= 90) && text[symbol] != 75
-             && text[symbol] != 78 && text[symbol] != 80 && text[symbol] != 81
-             && text[symbol] != 82)
-            || (text[symbol] >= 105 && text[symbol] <= 122
-                && text[symbol] != 120)
-            || (text[symbol] == 57)) {
+        if ((int)text[symbol] != 23 && (int)text[symbol] != 43
+            && (int)text[symbol] != 45 && (int)text[symbol] != 46
+            && (int)text[symbol] != 49 && (int)text[symbol] != 50
+            && (int)text[symbol] != 51 && (int)text[symbol] != 52
+            && (int)text[symbol] != 53 && (int)text[symbol] != 54
+            && (int)text[symbol] != 55 && (int)text[symbol] != 56
+            && (int)text[symbol] != 97 && (int)text[symbol] != 98
+            && (int)text[symbol] != 99 && (int)text[symbol] != 100
+            && (int)text[symbol] != 101 && (int)text[symbol] != 102
+            && (int)text[symbol] != 103 && (int)text[symbol] != 104
+            && (int)text[symbol] != 75 && (int)text[symbol] != 81
+            && (int)text[symbol] != 82 && (int)text[symbol] != 66
+            && (int)text[symbol] != 78 && (int)text[symbol] != 112
+            && (int)text[symbol] != 32 && (int)text[symbol] != 120) {
             *error = 5;
             break;
         }
