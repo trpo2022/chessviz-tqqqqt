@@ -23,10 +23,12 @@ int main()
         return 44;
     }
 
-    FILE* ofile = fopen("output.txt", "w");
-    if (ofile == NULL) {
-        printf(" Errore. Output file do not opened. Check output.txt file. ");
-        return 44;
+    FILE* ofile = fopen("output.txt", "r");
+    if (ofile != NULL) {
+        fclose(ofile);
+        ofile = fopen("output.txt", "w");
+    } else if (ofile == NULL) {
+        ofile = fopen("output.txt", "w");
     }
 
     start_table(table);
