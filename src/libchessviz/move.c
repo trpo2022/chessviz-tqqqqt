@@ -12,7 +12,8 @@ void move_figure(
     int symbol = 0, first_sign = 0, last_sign = 0;
     int xx = 0, yy = 0, xx1 = 0, yy1 = 0, move_flag = 0, memory = 0,
         need_figure = 0, end_of_record = 0, print_flag = 0, players_turn = 0;
-    for (symbol = 0; symbol <= (int)strlen(text) - 2; symbol++) {
+    for (symbol = 0; symbol <= (int)strlen(text) - reading_artifacts;
+         symbol++) {
         if (((text[symbol] >= 73 && text[symbol] <= 90) && text[symbol] != 75
              && text[symbol] != 78 && text[symbol] != 80 && text[symbol] != 81
              && text[symbol] != 82)
