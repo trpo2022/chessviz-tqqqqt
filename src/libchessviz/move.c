@@ -139,7 +139,15 @@ void move_figure(
                 *error = 3;
                 break;
             }
-            check_rule(xx, yy, xx1, yy1, move_flag, table[yy][xx], &error);
+            check_rule(
+                    xx,
+                    yy,
+                    xx1,
+                    yy1,
+                    move_flag,
+                    table[yy][xx],
+                    table[yy1][xx1],
+                    &error);
             memory = table[yy][xx];
             table[yy][xx] = 0;
             table[yy1][xx1] = memory;
@@ -167,7 +175,15 @@ void move_figure(
                 *error = 4;
                 break;
             }
-            check_rule(xx, yy, xx1, yy1, move_flag, table[yy][xx], &error);
+            check_rule(
+                    xx,
+                    yy,
+                    xx1,
+                    yy1,
+                    move_flag,
+                    table[yy][xx],
+                    table[yy1][xx1],
+                    &error);
             memory = table[yy][xx];
             table[yy][xx] = 0;
             table[yy1][xx1] = memory;
