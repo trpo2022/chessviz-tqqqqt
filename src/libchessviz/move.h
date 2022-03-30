@@ -5,7 +5,7 @@
 
 #define Weight 8
 #define Height 8
-#define size 20
+#define size 40
 
 void move_figure(
         int step,
