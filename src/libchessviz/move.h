@@ -6,6 +6,7 @@
 
 #define Weight 8
 #define Height 8
+#define reading_artifacts 2
 #define size 40
 
 void move_figure(
