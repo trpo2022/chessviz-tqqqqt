@@ -40,3 +40,4 @@ clean:
 	rm $(APP_PATH) $(LIB_PATH)
 	find $(OBJ) -name '*.o' -exec rm '{}' \;
 	find $(OBJ) -name '*.d' -exec rm '{}' \;
+	rm output.txt

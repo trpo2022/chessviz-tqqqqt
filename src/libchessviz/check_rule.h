@@ -7,4 +7,11 @@
 #define Height 8
 
 void check_rule(
-        int x, int y, int x1, int y1, int flag, int figures, int** error);
+        int x,
+        int y,
+        int x1,
+        int y1,
+        int flag,
+        int figures,
+        int enemy,
+        int** error);
