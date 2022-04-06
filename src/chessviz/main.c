@@ -39,8 +39,7 @@ int main()
     while (exit_status < 2) {
         while ((end_of_line = fgetc(file)) != EOF) {
             fgets(line, size, file);
-            // move_figure(step, line, table, &error, ofile);
-            read_file(step,line, ofile, &error, table);
+            read_file(step, line, ofile, &error, table);
             printf("\n \n");
             fprintf(ofile, "\n \n");
             step++;
