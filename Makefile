@@ -1,4 +1,5 @@
 APP = Chessviz
+TEST = test
 
 APP_NAME = chessviz
 LIB_NAME = libchessviz
@@ -10,6 +11,9 @@ BIN = bin
 OBJ = obj
 SRC = src
 
+TES = test
+TP = thirdparty
+
 APP_PATH = $(BIN)/$(APP)
 LIB_PATH = $(OBJ)/$(SRC)/$(LIB_NAME)/$(LIB_NAME).a
 
@@ -19,7 +23,11 @@ APP_OBJ = $(APP_SRC:$(SRC)/%.c=$(OBJ)/$(SRC)/%.o)
 LIB_SRC = $(shell find $(SRC)/$(LIB_NAME) -name '*.c')
 LIB_OBJ = $(LIB_SRC:$(SRC)/%.c=$(OBJ)/$(SRC)/%.o)
 
-DEPS = $(APP_OBJ:.o=.d) $(LIB_OBJ:.o=.d)
+TEST_PATH = $(BIN)/$(TEST)
+TEST_SRC = $(shell find $(TES)/ -name '*.c')
+TEST_OBJ = $(TEST_SRC:$(TES)/%.c=$(OBJ)/test/%.o)
+
+DEPS = $(APP_OBJ:.o=.d) $(LIB_OBJ:.o=.d) $(TEST_OBJ:.o=.d)
 
 .PHONY: $(APP)
 $(APP): $(APP_PATH)
@@ -35,8 +43,18 @@ $(LIB_PATH): $(LIB_OBJ)
 $(OBJ)/%.o: %.c
 	gcc -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
+.PHONY: $(TEST)
+$(TEST): $(TEST_PATH)
+
+$(TEST_PATH): $(TEST_SRC)
+	gcc $(CFLAGS) -I $(TP) $^ -o $@
+
+$(TEST_OBJ)/%.o: %.c
+	gcc -c $(CFLAGS) -I $(TP) $< -o $@
+
 .PHONY: clean
 clean:
+	rm $(TEST_PATH)
 	rm $(APP_PATH) $(LIB_PATH)
 	find $(OBJ) -name '*.o' -exec rm '{}' \;
 	find $(OBJ) -name '*.d' -exec rm '{}' \;

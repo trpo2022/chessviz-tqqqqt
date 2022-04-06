@@ -13,3 +13,14 @@ jobs:
 
       - name: Build application
         run: make
+
+	test:
+		name: Test
+		runs-on: ubuntu-20.04
+
+		steps:
+			- name: Check codestyle
+				run: git ls-files *.c | xargs clang-format -i --verbose && git diff --exit-code
+
+			- name: Test application
+				run: make test
