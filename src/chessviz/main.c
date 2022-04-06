@@ -28,8 +28,14 @@ int main()
     if (ofile != NULL) {
         fclose(ofile);
         ofile = fopen("output.txt", "w");
+        if (ofile == NULL)
+            while (ofile == NULL)
+                ofile = fopen("output.txt", "w");
     } else if (ofile == NULL) {
         ofile = fopen("output.txt", "w");
+        if (ofile == NULL)
+            while (ofile == NULL)
+                ofile = fopen("output.txt", "w");
     }
 
     start_table(table);
