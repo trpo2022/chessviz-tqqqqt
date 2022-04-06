@@ -15,7 +15,7 @@ jobs:
         run: make
 
       - name: Check codestyle
-        run: git ls-files *.c | xargs clang-format -i --verbose && git diff --exit-code
+        run: git ls-files test/*.c | xargs clang-format -i --verbose && git diff --exit-code
 
       - name: Test application
         run: make test
