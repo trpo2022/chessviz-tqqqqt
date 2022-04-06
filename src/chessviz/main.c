@@ -6,6 +6,7 @@
 #include <libchessviz/eror_mes.h>
 #include <libchessviz/move.h>
 #include <libchessviz/print_table.h>
+#include <libchessviz/read_file.h>
 
 #define Weight 8
 #define Height 8
@@ -38,7 +39,8 @@ int main()
     while (exit_status < 2) {
         while ((end_of_line = fgetc(file)) != EOF) {
             fgets(line, size, file);
-            move_figure(step, line, table, &error, ofile);
+            // move_figure(step, line, table, &error, ofile);
+            read_file(step,line, ofile, &error, table);
             printf("\n \n");
             fprintf(ofile, "\n \n");
             step++;
