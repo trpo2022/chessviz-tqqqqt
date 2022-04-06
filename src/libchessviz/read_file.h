@@ -9,4 +9,9 @@
 #define reading_artifacts 2
 #define size 40
 
-void read_file(int step, char text[], FILE* ofile, int* error, int table[Weight][Height]);
+void read_file(
+        int step,
+        char text[],
+        FILE* ofile,
+        int* error,
+        int table[Weight][Height]);
