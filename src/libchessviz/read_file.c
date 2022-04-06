@@ -50,21 +50,21 @@ void read_file(
             xx = 6;
         else if (text[symbol] == 'h' && move_flag == 0)
             xx = 7;
-        else if (text[symbol] == 49 && move_flag == 0)
+        else if (text[symbol] == '1' && move_flag == 0)
             yy = 0;
-        else if (text[symbol] == 50 && move_flag == 0)
+        else if (text[symbol] == '2' && move_flag == 0)
             yy = 1;
-        else if (text[symbol] == 51 && move_flag == 0)
+        else if (text[symbol] == '3' && move_flag == 0)
             yy = 2;
-        else if (text[symbol] == 52 && move_flag == 0)
+        else if (text[symbol] == '4' && move_flag == 0)
             yy = 3;
-        else if (text[symbol] == 53 && move_flag == 0)
+        else if (text[symbol] == '5' && move_flag == 0)
             yy = 4;
-        else if (text[symbol] == 54 && move_flag == 0)
+        else if (text[symbol] == '6' && move_flag == 0)
             yy = 5;
-        else if (text[symbol] == 55 && move_flag == 0)
+        else if (text[symbol] == '7' && move_flag == 0)
             yy = 6;
-        else if (text[symbol] == 56 && move_flag == 0)
+        else if (text[symbol] == '8' && move_flag == 0)
             yy = 7;
 
         if (text[symbol] == 'a' && (move_flag == 1 || move_flag == 2))
@@ -83,28 +83,28 @@ void read_file(
             xx1 = 6;
         else if (text[symbol] == 'h' && (move_flag == 1 || move_flag == 2))
             xx1 = 7;
-        else if (text[symbol] == 49 && (move_flag == 1 || move_flag == 2)) {
+        else if (text[symbol] == '1' && (move_flag == 1 || move_flag == 2)) {
             yy1 = 0;
             end_of_record = 1;
-        } else if (text[symbol] == 50 && (move_flag == 1 || move_flag == 2)) {
+        } else if (text[symbol] == '2' && (move_flag == 1 || move_flag == 2)) {
             yy1 = 1;
             end_of_record = 1;
-        } else if (text[symbol] == 51 && (move_flag == 1 || move_flag == 2)) {
+        } else if (text[symbol] == '3' && (move_flag == 1 || move_flag == 2)) {
             yy1 = 2;
             end_of_record = 1;
-        } else if (text[symbol] == 52 && (move_flag == 1 || move_flag == 2)) {
+        } else if (text[symbol] == '4' && (move_flag == 1 || move_flag == 2)) {
             yy1 = 3;
             end_of_record = 1;
-        } else if (text[symbol] == 53 && (move_flag == 1 || move_flag == 2)) {
+        } else if (text[symbol] == '5' && (move_flag == 1 || move_flag == 2)) {
             yy1 = 4;
             end_of_record = 1;
-        } else if (text[symbol] == 54 && (move_flag == 1 || move_flag == 2)) {
+        } else if (text[symbol] == '6' && (move_flag == 1 || move_flag == 2)) {
             yy1 = 5;
             end_of_record = 1;
-        } else if (text[symbol] == 55 && (move_flag == 1 || move_flag == 2)) {
+        } else if (text[symbol] == '7' && (move_flag == 1 || move_flag == 2)) {
             yy1 = 6;
             end_of_record = 1;
-        } else if (text[symbol] == 56 && (move_flag == 1 || move_flag == 2)) {
+        } else if (text[symbol] == '8' && (move_flag == 1 || move_flag == 2)) {
             yy1 = 7;
             end_of_record = 1;
         }
@@ -146,5 +146,8 @@ void read_file(
                     table,
                     error,
                     ofile);
+
+        if (*error > 0)
+            break;
     }
 }
