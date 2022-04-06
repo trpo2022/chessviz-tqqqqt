@@ -11,7 +11,17 @@
 
 void move_figure(
         int step,
-        char text[],
+        int xx,
+        int yy,
+        int xx1,
+        int yy1,
+        int move_flag,
+        int first_sign,
+char line[size],        
+//int print_flag,
+        int end_of_record,
+        int need_figure,
+        int symbol,
         int table[Weight][Height],
         int* error,
         FILE* ofile);
