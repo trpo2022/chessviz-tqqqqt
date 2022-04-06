@@ -10,16 +10,16 @@ void check_rule(
         int enemy,
         int** error)
 {
-    int figure_flag = 0, enemy_flag = 0;
+    int figure_flag = 0, enemy_flag = 0, side_max_value = 10;
 
-    if (figures > 0 && figures < 10)
+    if (figures > 0 && figures < side_max_value)
         figure_flag = 1;
-    else if (figures >= 10)
+    else if (figures >= side_max_value)
         figure_flag = 2;
 
-    if (enemy > 0 && enemy < 10)
+    if (enemy > 0 && enemy < side_max_value)
         enemy_flag = 1;
-    else if (enemy >= 10)
+    else if (enemy >= side_max_value)
         enemy_flag = 2;
 
     switch (figures) {
