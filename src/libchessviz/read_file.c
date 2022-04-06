@@ -9,9 +9,11 @@ void read_file(
         int table[Weight][Height])
 {
     int xx = 0, yy = 0, xx1 = 0, yy1 = 0, move_flag = 0, need_figure = 0,
-        end_of_record = 0, print_flag = 0, first_sign = 0, last_sign = 0, players_turn=0;
+        end_of_record = 0, print_flag = 0, first_sign = 0, last_sign = 0,
+        players_turn = 0;
 
-    for (int symbol = 0; symbol <= (int)strlen(text) - reading_artifacts; symbol++) {
+    for (int symbol = 0; symbol <= (int)strlen(text) - reading_artifacts;
+         symbol++) {
         if ((int)text[symbol] != 23 && (int)text[symbol] != 43
             && (int)text[symbol] != 45 && (int)text[symbol] != 46
             && (int)text[symbol] != 49 && (int)text[symbol] != 50
@@ -25,7 +27,8 @@ void read_file(
             && (int)text[symbol] != 75 && (int)text[symbol] != 81
             && (int)text[symbol] != 82 && (int)text[symbol] != 66
             && (int)text[symbol] != 78 && (int)text[symbol] != 112
-            && (int)text[symbol] != 32 && (int)text[symbol] != 120 && (int)text[symbol] != 35 && text[symbol] != '+') {
+            && (int)text[symbol] != 32 && (int)text[symbol] != 120
+            && (int)text[symbol] != 35 && text[symbol] != '+') {
             *error = 5;
             break;
         }
@@ -129,9 +132,9 @@ void read_file(
             break;
         }
 
-        if (end_of_record == 1 && (move_flag == 1 || move_flag == 2)){
-last_sign=symbol;           
- move_figure(
+        if (end_of_record == 1 && (move_flag == 1 || move_flag == 2)) {
+            last_sign = symbol;
+            move_figure(
                     step,
                     xx,
                     yy,
@@ -139,25 +142,23 @@ last_sign=symbol;
                     yy1,
                     &move_flag,
                     first_sign,
-last_sign,
+                    last_sign,
                     text,
-                    // print_flag,
                     end_of_record,
                     need_figure,
-&players_turn,
-                   // symbol,
+                    &players_turn,
                     table,
                     error,
-                    ofile);}
+                    ofile);
+        }
 
-if (move_flag == 3) {
+        if (move_flag == 3) {
             move_flag = 0;
             end_of_record = 0;
             print_flag = 0;
             need_figure = 0;
             xx = 0;
             yy = 0;
-            //memory = 0;
             xx1 = 0;
             yy1 = 0;
         }
