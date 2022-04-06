@@ -25,7 +25,7 @@ void read_file(
             && (int)text[symbol] != 75 && (int)text[symbol] != 81
             && (int)text[symbol] != 82 && (int)text[symbol] != 66
             && (int)text[symbol] != 78 && (int)text[symbol] != 112
-            && (int)text[symbol] != 32 && (int)text[symbol] != 120) {
+            && (int)text[symbol] != 32 && (int)text[symbol] != 120 && (int)text[symbol] != 35 && text[symbol] != '+') {
             *error = 5;
             break;
         }
