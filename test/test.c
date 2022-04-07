@@ -8,11 +8,20 @@ CTEST(read_tt, simple_read)
     fgets(result, 6, file);
     fclose(file);
 
-    const char expected[5] = {'e', '2', '-', 'e', '4'};
+    const char expected[6] = {'e', '2', '-', 'e', '4'};
 
     ASSERT_STR(result, expected);
+}
+
+CTEST(read_tt, sign_if_read)
+{
+    FILE* file = fopen("test.txt", "r");
+    char result[6];
+    fgets(result, 6, file);
+    fclose(file);
+
     int xx = 0, yy = 0, flag = 0, xx1 = 0, yy1 = 0;
-    for (int symbol = 0; symbol < 5; symbol++) {
+    for (int symbol = 0; symbol <= 5; symbol++) {
         if (result[symbol] == '-')
             flag = 1;
         if (result[symbol] == 'a' && flag == 0)
@@ -87,8 +96,18 @@ CTEST(read_tt, simple_read)
     ASSERT_EQUAL(yy, y);
     ASSERT_EQUAL(xx1, x1);
     ASSERT_EQUAL(yy1, y1);
+}
 
-    for (int symbol = 0; symbol < 5; symbol++) {
+CTEST(read_tt, sign_case_read)
+{
+    FILE* file = fopen("test.txt", "r");
+    char result[6];
+    fgets(result, 6, file);
+    fclose(file);
+
+    int xx = 0, yy = 0, flag = 0, xx1 = 0, yy1 = 0;
+
+    for (int symbol = 0; symbol <= 5; symbol++) {
         switch ((int)result[symbol]) {
         case 'e':
             if (flag == 0)
@@ -108,8 +127,12 @@ CTEST(read_tt, simple_read)
             else
                 yy1 = 3;
             break;
+        case '-':
+            flag++;
+            break;
         }
     }
+    const int x = 4, y = 1, x1 = 4, y1 = 3;
     ASSERT_EQUAL(xx, x);
     ASSERT_EQUAL(yy, y);
     ASSERT_EQUAL(xx1, x1);
