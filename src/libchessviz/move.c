@@ -20,16 +20,16 @@ void move_figure(
         int* error,
         FILE* ofile)
 {
-    while (*error == 0) {
+    while (*error == Wait_mode) {
         if (end_of_record == 1 && *move_flag == 1) {
             if (need_figure > 0
                 && (table[yy][xx] != need_figure
                     && table[yy][xx] != (need_figure / 10))) {
-                *error = 2;
+                *error = Piece_not_in_pos;
                 break;
             }
             if (table[yy1][xx1] != 0) {
-                *error = 3;
+                *error = Error_quite_move;
                 break;
             }
             check_rule(
@@ -41,7 +41,7 @@ void move_figure(
                     table[yy][xx],
                     table[yy1][xx1],
                     &error);
-            if (*error > 0)
+            if (*error > Wait_mode)
                 break;
             memory = table[yy][xx];
             table[yy][xx] = 0;
@@ -56,7 +56,7 @@ void move_figure(
                     && *player_turn == 1)
                 *player_turn = 2;
             else
-                *error = 6;
+                *error = Broken_sequence_moves;
             break;
         }
 
@@ -64,11 +64,11 @@ void move_figure(
             if (need_figure > 0
                 && (table[yy][xx] != need_figure
                     && table[yy][xx] != (need_figure / 10))) {
-                *error = 2;
+                *error = Piece_not_in_pos;
                 break;
             }
             if (table[yy1][xx1] == 0) {
-                *error = 4;
+                *error = Error_capture_move;
                 break;
             }
             check_rule(
@@ -80,7 +80,7 @@ void move_figure(
                     table[yy][xx],
                     table[yy1][xx1],
                     &error);
-            if (*error > 0)
+            if (*error > Wait_mode)
                 break;
             memory = table[yy][xx];
             table[yy][xx] = 0;
@@ -95,7 +95,7 @@ void move_figure(
                     && *player_turn == 1)
                 *player_turn = 2;
             else
-                *error = 6;
+                *error = Broken_sequence_moves;
             break;
         }
 
@@ -110,7 +110,7 @@ void move_figure(
             yy1 = 0;
         }
 
-        if (*error > 0) {
+        if (*error > Wait_mode) {
             break;
         }
     }
