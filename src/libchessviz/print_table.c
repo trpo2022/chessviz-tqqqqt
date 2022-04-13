@@ -3,8 +3,8 @@
 void print_table(
         int step,
         char text[],
-        int first_sign,
-        int last_sign,
+        int* first_sign,
+        int* last_sign,
         int table[Weight][Height],
         FILE* ofile)
 {
@@ -16,7 +16,7 @@ void print_table(
         fprintf(ofile, " %d. ", step);
     }
     if (first_sign != 0 && last_sign != 0)
-        for (int i = first_sign; i <= last_sign; i++) {
+        for (int i = *first_sign; i <= *last_sign; i++) {
             printf("%c", text[0 + i]);
             fprintf(ofile, "%c", text[0 + i]);
         }

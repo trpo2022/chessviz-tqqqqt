@@ -9,7 +9,7 @@
 void print_table(
         int step,
         char text[],
-        int first_sign,
-        int last_sign,
+        int* first_sign,
+        int* last_sign,
         int table[Weight][Height],
         FILE* ofile);

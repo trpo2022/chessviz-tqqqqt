@@ -3,14 +3,15 @@
 #include <libchessviz/print_table.h>
 
 void move_figure(
+        int memory,
         int step,
         int xx,
         int yy,
         int xx1,
         int yy1,
         int* move_flag,
-        int first_sign,
-        int last_sign,
+        int* first_sign,
+        int* last_sign,
         char text[size],
         int end_of_record,
         int need_figure,
@@ -19,7 +20,6 @@ void move_figure(
         int* error,
         FILE* ofile)
 {
-    int memory = 0;
     while (*error == 0) {
         if (end_of_record == 1 && *move_flag == 1) {
             if (need_figure > 0
@@ -37,7 +37,7 @@ void move_figure(
                     yy,
                     xx1,
                     yy1,
-                    *move_flag,
+                    &move_flag,
                     table[yy][xx],
                     table[yy1][xx1],
                     &error);
@@ -76,7 +76,7 @@ void move_figure(
                     yy,
                     xx1,
                     yy1,
-                    *move_flag,
+                    &move_flag,
                     table[yy][xx],
                     table[yy1][xx1],
                     &error);
@@ -109,6 +109,7 @@ void move_figure(
             xx1 = 0;
             yy1 = 0;
         }
+
         if (*error > 0) {
             break;
         }

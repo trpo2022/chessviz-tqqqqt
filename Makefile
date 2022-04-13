@@ -4,7 +4,7 @@ TEST = test
 APP_NAME = chessviz
 LIB_NAME = libchessviz
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Werror
 CPPFLAGS = -I src -MMD
 
 BIN = bin
@@ -54,8 +54,8 @@ $(TEST_OBJ)/%.o: %.c
 
 .PHONY: clean
 clean:
-	rm $(TEST_PATH)
 	rm $(APP_PATH) $(LIB_PATH)
 	find $(OBJ) -name '*.o' -exec rm '{}' \;
 	find $(OBJ) -name '*.d' -exec rm '{}' \;
+	rm $(TEST_PATH)
 	rm output.txt
