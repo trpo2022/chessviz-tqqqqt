@@ -10,14 +10,15 @@
 #define size 40
 
 void move_figure(
+        int memory,
         int step,
         int xx,
         int yy,
         int xx1,
         int yy1,
         int* move_flag,
-        int first_sign,
-        int last_sign,
+        int* first_sign,
+        int* last_sign,
         char line[size],
         int end_of_record,
         int need_figure,
