@@ -35,7 +35,7 @@ void read_file(
             && (int)text[*symbol] != 78 && (int)text[*symbol] != 112
             && (int)text[*symbol] != 32 && (int)text[*symbol] != 120
             && (int)text[*symbol] != 35 && text[*symbol] != '+') {
-            *error = 5;
+            *error = Exceeding_field_bound;
             break;
         }
 
@@ -151,7 +151,7 @@ void read_file(
             break;
         }
 
-        if (*error > 0)
+        if (*error > Wait_mode)
             break;
     }
 }
