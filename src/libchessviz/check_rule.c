@@ -5,7 +5,7 @@ void check_rule(
         int y,
         int x1,
         int y1,
-        int flag,
+        int** flag,
         int figures,
         int enemy,
         int** error)
@@ -25,13 +25,13 @@ void check_rule(
     switch (figures) {
     case 1:
     case 10: // peshka
-        if ((abs(y1 - y) > 2 || abs(x1 - x) > 0) && flag == 1)
+        if ((abs(y1 - y) > 2 || abs(x1 - x) > 0) && **flag == 1)
             **error = 1;
         if ((abs(x1 - x) > 1 || abs(y1 - y) > 1 || figure_flag == enemy_flag)
-            && flag == 2)
+            && **flag == 2)
             **error = 1;
         if ((abs(x1 - x) > 1 && (y != 6 && y != 1) && abs(y1 - y) > 0)
-            && flag == 1)
+            && **flag == 1)
             **error = 1;
         if (abs(x1 - x) > Height || abs(y1 - y) > Weight)
             **error = 5;
@@ -42,7 +42,7 @@ void check_rule(
             **error = 1;
         if (abs(x1 - x) > Height || abs(y1 - y) > Weight)
             **error = 5;
-        if (flag == 2 && (figure_flag == enemy_flag))
+        if (**flag == 2 && (figure_flag == enemy_flag))
             **error = 1;
         break;
     case 3:
@@ -53,7 +53,7 @@ void check_rule(
             || (abs(y1 - y) == 1 && abs(x1 - x) == 2)) {
         } else
             **error = 1;
-        if (flag == 2 && (figure_flag == enemy_flag))
+        if (**flag == 2 && (figure_flag == enemy_flag))
             **error = 1;
         break;
     case 4:
@@ -63,7 +63,7 @@ void check_rule(
         if ((abs(x1 - x) > 0 && abs(y1 - y) == 0)
             || ((y1 - y) > 0 && (x1 - x) == 0))
             **error = 1;
-        if (flag == 2 && (figure_flag == enemy_flag))
+        if (**flag == 2 && (figure_flag == enemy_flag))
             **error = 1;
         break;
     case 5:
@@ -73,7 +73,7 @@ void check_rule(
         if ((abs(x1 - x) == 2 && abs(y1 - y) == 1)
             || (abs(x1 - x) == 1 && abs(y1 - y) == 2))
             **error = 1;
-        if (flag == 2 && (figure_flag == enemy_flag))
+        if (**flag == 2 && (figure_flag == enemy_flag))
             **error = 1;
         break;
     case 6:
@@ -82,7 +82,7 @@ void check_rule(
             **error = 5;
         if (abs(x1 - x) > 1 && abs(y1 - y) > 1)
             **error = 1;
-        if (flag == 2 && (figure_flag == enemy_flag))
+        if (**flag == 2 && (figure_flag == enemy_flag))
             **error = 1;
         break;
     }
