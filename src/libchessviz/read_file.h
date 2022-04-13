@@ -10,8 +10,17 @@
 #define size 40
 
 void read_file(
-        int step,
+        int* xx,
+        int* yy,
+        int* xx1,
+        int* yy1,
+        int* move_flag,
+        int* need_figure,
+        int* end_of_record,
+        int* print_flag,
+        int* first_sign,
+        int* last_sign,
+        int* symbol,
         char text[],
-        FILE* ofile,
         int* error,
-        int table[Weight][Height]);
+        int* stop_sign);
