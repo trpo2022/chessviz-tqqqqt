@@ -28,6 +28,10 @@ void move_figure(
                 *error = Piece_not_in_pos;
                 break;
             }
+            if (table[yy][xx] == 0) {
+                *error = Piece_not_in_pos;
+                break;
+            }
             if (table[yy1][xx1] != 0) {
                 *error = Error_quite_move;
                 break;
@@ -37,10 +41,10 @@ void move_figure(
                     yy,
                     xx1,
                     yy1,
-                    &move_flag,
+                    move_flag,
                     table[yy][xx],
                     table[yy1][xx1],
-                    &error);
+                    error);
             if (*error > Wait_mode)
                 break;
             memory = table[yy][xx];
@@ -71,15 +75,19 @@ void move_figure(
                 *error = Error_capture_move;
                 break;
             }
+            if (table[yy][xx] == 0) {
+                *error = Piece_not_in_pos;
+                break;
+            }
             check_rule(
                     xx,
                     yy,
                     xx1,
                     yy1,
-                    &move_flag,
+                    move_flag,
                     table[yy][xx],
                     table[yy1][xx1],
-                    &error);
+                    error);
             if (*error > Wait_mode)
                 break;
             memory = table[yy][xx];
