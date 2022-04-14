@@ -62,7 +62,7 @@ void check_rule(
             **error = Exceeding_field_bound;
         if ((abs(x1 - x) > 0 && abs(y1 - y) == 0)
             || ((y1 - y) > 0 && (x1 - x) == 0))
-            **error = 1;
+            **error = Violation_of_rules;
         if (**flag == 2 && (figure_flag == enemy_flag))
             **error = Violation_of_rules;
         break;

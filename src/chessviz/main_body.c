@@ -113,6 +113,8 @@ void main_body(FILE* file, FILE* ofile)
             if (error > Wait_mode)
                 break;
         }
+        if (error == Wait_mode)
+            error = Party_over;
         eror_message(ErrorNam, &error, ofile);
         exit_status += 20;
     }
