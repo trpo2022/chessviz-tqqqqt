@@ -1,4 +1,4 @@
-#include <chessviz/start_table.h>
+#include <libchessviz/start_table.h>
 
 void start_table(int table[Weight][Height])
 {

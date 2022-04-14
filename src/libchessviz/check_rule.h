@@ -19,7 +19,7 @@ void check_rule(
         int y,
         int x1,
         int y1,
-        int** flag,
+        int* flag,
         int figures,
         int enemy,
-        int** error);
+        int* error);
