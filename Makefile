@@ -46,16 +46,16 @@ $(OBJ)/%.o: %.c
 .PHONY: $(TEST)
 $(TEST): $(TEST_PATH)
 
-$(TEST_PATH): $(TEST_SRC)
-	gcc $(CFLAGS) -I $(TP) $^ -o $@
+$(TEST_PATH): $(TEST_SRC) $(LIB_PATH)
+	gcc $(CFLAGS) -I $(TP) -I $(SRC) $^ -o $@
 
 $(TEST_OBJ)/%.o: %.c
-	gcc -c $(CFLAGS) -I $(TP) $< -o $@
+	gcc -c $(CFLAGS) -I $(TP) -I $(SRC) $< -o $@
 
 .PHONY: clean
 clean:
-	rm $(APP_PATH) $(LIB_PATH)
+	rm -f $(APP_PATH) $(LIB_PATH)
 	find $(OBJ) -name '*.o' -exec rm '{}' \;
 	find $(OBJ) -name '*.d' -exec rm '{}' \;
-	rm $(TEST_PATH)
-	rm output.txt
+	rm -f $(TEST_PATH)
+	rm -f output.txt
