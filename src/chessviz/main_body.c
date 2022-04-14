@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <chessviz/start_table.h>
 #include <libchessviz/check_rule.h>
 #include <libchessviz/eror_mes.h>
 #include <libchessviz/move.h>
 #include <libchessviz/print_table.h>
 #include <libchessviz/read_file.h>
+#include <libchessviz/start_table.h>
 
 #define Wait_mode 0
 #define Party_over 1
